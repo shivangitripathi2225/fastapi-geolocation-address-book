@@ -20,7 +20,7 @@ GET /addresses/nearby?lat=&lon=&distance=
 
 Clone repo
 
-git clone <repo-url>
+git clone https://github.com/shivangitripathi2225/fastapi-geolocation-address-book.git
 
 cd address-book-fastapi
 
