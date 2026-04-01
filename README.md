@@ -1,43 +1,85 @@
-# Address Book FastAPI
+# FastAPI Address Book API
+
+A minimal Address Book API built with FastAPI that allows users to create, update, delete, and retrieve addresses. The API also supports geolocation-based filtering to find addresses within a given distance from provided coordinates.
+
+---
 
 ## Features
 
-- Create, Update, Delete Address
-- SQLite database
-- Geolocation-based filtering using geopy
-- Input validation using Pydantic
-- Logging enabled
+- Create, update, delete, and list addresses
+- Store address coordinates (latitude, longitude)
+- SQLite database integration
+- SQLAlchemy ORM usage
+- Input validation with Pydantic
+- Geolocation-based nearby address search using geopy
+- Logging for API operations and failures
+- Environment-based configuration using `.env`
 
-## API Endpoints
+---
 
-POST /addresses  
-GET /addresses  
-PUT /addresses/{id}  
-DELETE /addresses/{id}  
-GET /addresses/nearby?lat=&lon=&distance=
+## Project Structure
 
-## Setup
+address-book-fastapi/
+│
+├── app/
+│   ├── main.py
+│   ├── crud.py
+│   ├── database.py
+│   ├── loggers.py
+│   ├── models.py
+│   ├── schemas.py
+│   └── utils.py
+│
+├── .env
+├── .gitignore
+├── requirements.txt
+└── README.md
 
-Clone repo
+---
 
-git clone https://github.com/shivangitripathi2225/fastapi-geolocation-address-book.git
+## Setup Instructions
 
-cd address-book-fastapi
+### 1. Clone the repository
 
-## Create virtual environment
+```bash
+git clone https://github.com/shivangitripathi2225/fastapi-geolocation-address-book
+cd fastapi-address-book-api
 
-python -m venv venv
+Mac/Linux 
+Run command 
+    python -m venv venv
+    source venv/bin/activate
 
-source venv/bin/activate
+Windows
+Run command 
+    python -m venv venv
+    venv\Scripts\activate
 
-## Install dependencies
-
+Install dependencies
 pip install -r requirements.txt
 
-## Run server
+Create .env file in project root
+DATABASE_URL=sqlite:///./address.db
 
+Run the application
 uvicorn app.main:app --reload
 
-## Swagger
-
+Swagger API Docs
+Once the server is running, open:
 http://127.0.0.1:8000/docs
+
+API Endpoints
+POST /addresses → Create address
+GET /addresses → List all addresses
+GET /addresses/nearby?lat=&lon=&distance= → Find nearby addresses
+PUT /addresses/{address_id} → Update address
+DELETE /addresses/{address_id} → Delete address
+
+Example Request Body
+{
+  "name": "Home",
+  "street": "Connaught Place",
+  "city": "Delhi",
+  "latitude": 28.6139,
+  "longitude": 77.2090
+}
