@@ -2,8 +2,6 @@
 
 A minimal Address Book API built with FastAPI that allows users to create, update, delete, and retrieve addresses. The API also supports geolocation-based filtering to find addresses within a given distance from provided coordinates.
 
----
-
 ## Features
 
 - Create, update, delete, and list addresses
@@ -14,8 +12,6 @@ A minimal Address Book API built with FastAPI that allows users to create, updat
 - Geolocation-based nearby address search using geopy
 - Logging for API operations and failures
 - Environment-based configuration using `.env`
-
----
 
 ## Project Structure
 
@@ -35,47 +31,58 @@ address-book-fastapi/
 ├── requirements.txt
 └── README.md
 
----
-
 ## Setup Instructions
 
 ### 1. Clone the repository
-
 ```bash
 git clone https://github.com/shivangitripathi2225/fastapi-geolocation-address-book
 cd fastapi-address-book-api
+```
 
-Mac/Linux 
-Run command 
-    python -m venv venv
-    source venv/bin/activate
+## Create virtual environment
 
-Windows
-Run command 
-    python -m venv venv
-    venv\Scripts\activate
+## Mac/Linux 
+```bash
+python -m venv venv
+source venv/bin/activate
+```
 
-Install dependencies
+## Windows
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+## Install dependencies
+```bash
 pip install -r requirements.txt
+```
 
-Create .env file in project root
+## Environment Variables
+Create a `.env` file in project root:
+
+```env
 DATABASE_URL=sqlite:///./address.db
+```
 
-Run the application
+## Run the application
+```bash
 uvicorn app.main:app --reload
+```
 
-Swagger API Docs
-Once the server is running, open:
+## Swagger API Docs
+## Once the server is running, open:
 http://127.0.0.1:8000/docs
 
-API Endpoints
-POST /addresses → Create address
-GET /addresses → List all addresses
-GET /addresses/nearby?lat=&lon=&distance= → Find nearby addresses
-PUT /addresses/{address_id} → Update address
-DELETE /addresses/{address_id} → Delete address
+## API Endpoints
+- POST /addresses → Create address
+- GET /addresses → List all addresses
+- GET /addresses/nearby?lat=&lon=&distance= → Find nearby addresses
+- PUT /addresses/{address_id} → Update address
+- DELETE /addresses/{address_id} → Delete address
 
-Example Request Body
+## Example Request Body
+```json
 {
   "name": "Home",
   "street": "Connaught Place",
